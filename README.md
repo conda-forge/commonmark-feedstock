@@ -11,6 +11,18 @@ Summary: Python parser for the CommonMark Markdown spec
 
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/commonmark-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/commonmark-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/commonmark-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/commonmark-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/commonmark-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/commonmark-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/commonmark/badges/version.svg)](https://anaconda.org/conda-forge/commonmark)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/commonmark/badges/downloads.svg)](https://anaconda.org/conda-forge/commonmark)
+
 Installing commonmark
 =====================
 
@@ -31,7 +43,6 @@ It is possible to list all of the versions of `commonmark` available on your pla
 ```
 conda search commonmark --channel conda-forge
 ```
-
 
 
 About conda-forge
@@ -67,18 +78,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/commonmark-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/commonmark-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/commonmark-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/commonmark-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/commonmark-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/commonmark-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/commonmark/badges/version.svg)](https://anaconda.org/conda-forge/commonmark)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/commonmark/badges/downloads.svg)](https://anaconda.org/conda-forge/commonmark)
 
 
 Updating commonmark-feedstock
