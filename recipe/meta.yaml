@@ -1,6 +1,6 @@
 {% set name = "CommonMark" %}
-{% set version = "0.7.2" %}
-{% set sha256 = "3cf8971d85b5782563ef8a3cc9c9ec92f09f4e6b856e42b0cbf1931927218e1b" %}
+{% set version = "0.7.3" %}
+{% set sha256 = "5f20ebd91614c8d339d4cded314894feb5d9a54c3b52c1ff9883794557149ea8" %}
 
 package:
   name: {{ name | lower }}
@@ -44,3 +44,4 @@ about:
 extra:
   recipe-maintainers:
     - ericmjl
+    - dpryan79
