@@ -1,6 +1,6 @@
 {% set name = "CommonMark" %}
-{% set version = "0.7.3" %}
-{% set sha256 = "5f20ebd91614c8d339d4cded314894feb5d9a54c3b52c1ff9883794557149ea8" %}
+{% set version = "0.7.4" %}
+{% set sha256 = "24678b72094398df96312fb927e274ccaf5148f25e47aca9f7fc062693ae7577" %}
 
 package:
   name: {{ name | lower }}
@@ -27,19 +27,36 @@ requirements:
     - future
 
 test:
+  source_files:
+    - spec.txt
+
   imports:
     - CommonMark
     - CommonMark.render
     - CommonMark.tests
 
+  requires:
+    - flake8
+    - hypothesis
+
   commands:
+    - python -m CommonMark.tests.unit_tests
+    # Fails on windows due to some encoding issue
+    - python -m CommonMark.tests.run_spec_tests  # [not win]
     - cmark --help
 
 about:
-  home: https://github.com/rtfd/CommonMark-py
+  home: http://commonmark.org/
   license: BSD 3-Clause
-  summary: 'Python parser for the CommonMark Markdown spec'
   license_file: LICENSE
+  license_family: BSD
+  summary: 'Python parser for the CommonMark Markdown spec'
+  description: |
+    CommonMark-py is a pure Python port of jgm's commonmark.js, a Markdown
+    parser and renderer for the CommonMark specification, using only native
+    modules.
+  dev_url: https://github.com/rtfd/CommonMark-py
+  doc_url: https://commonmark-py.readthedocs.io
 
 extra:
   recipe-maintainers:
