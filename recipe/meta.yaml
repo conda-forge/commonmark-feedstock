@@ -14,7 +14,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: pip install --no-use-wheel --ignore-installed --no-deps .
   entry_points:
     - cmark = CommonMark.cmark:main
 
