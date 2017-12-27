@@ -14,7 +14,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: pip install --no-use-wheel --ignore-installed --no-deps .
+  script: pip install -v --no-binary :all: --ignore-installed --no-deps .
 
 requirements:
   build:
