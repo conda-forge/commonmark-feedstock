@@ -1,6 +1,6 @@
 {% set name = "CommonMark" %}
-{% set version = "0.5.4" %}
-{% set sha256 = "34d73ec8085923c023930dfc0bcd1c4286e28a2a82de094bb72fabcc0281cbe5" %}
+{% set version = "0.7.4" %}
+{% set sha256 = "24678b72094398df96312fb927e274ccaf5148f25e47aca9f7fc062693ae7577" %}
 
 package:
   name: {{ name | lower }}
@@ -13,8 +13,10 @@ source:
 
 build:
   noarch: python
-  number: 0
-  script: "pip install -v --no-binary :all: --ignore-installed --no-deps ."
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  entry_points:
+    - cmark = CommonMark.cmark:main
 
 requirements:
   build:
@@ -29,15 +31,20 @@ test:
   source_files:
     - spec.txt
 
-#  imports:
-#    - CommonMark
+  imports:
+    - CommonMark
+    - CommonMark.render
+    - CommonMark.tests
 
   requires:
     - flake8
     - hypothesis
 
   commands:
-    - cmark.py --help
+    - python -m CommonMark.tests.unit_tests
+    # Fails on windows due to some encoding issue
+    - python -m CommonMark.tests.run_spec_tests  # [not win]
+    - cmark --help
 
 about:
   home: http://commonmark.org/
