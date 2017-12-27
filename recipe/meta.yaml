@@ -29,8 +29,8 @@ test:
   source_files:
     - spec.txt
 
-  imports:
-    - CommonMark
+#  imports:
+#    - CommonMark
 
   requires:
     - flake8
