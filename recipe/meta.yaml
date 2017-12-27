@@ -31,18 +31,13 @@ test:
 
   imports:
     - CommonMark
-    - CommonMark.render
-    - CommonMark.tests
 
   requires:
     - flake8
     - hypothesis
 
   commands:
-    - python -m CommonMark.tests.unit_tests
-    # Fails on windows due to some encoding issue
-    - python -m CommonMark.tests.run_spec_tests  # [not win]
-    - cmark --help
+    - cmark.py --help
 
 about:
   home: http://commonmark.org/
