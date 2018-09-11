@@ -1,41 +1,35 @@
-{% set name = "CommonMark" %}
 {% set version = "0.5.4" %}
-{% set sha256 = "34d73ec8085923c023930dfc0bcd1c4286e28a2a82de094bb72fabcc0281cbe5" %}
 
 package:
-  name: {{ name | lower }}
+  name: commonmark
   version: {{ version }}
 
 source:
-  fn:  {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/C/CommonMark/CommonMark-{{ version }}.tar.gz
+  sha256: 34d73ec8085923c023930dfc0bcd1c4286e28a2a82de094bb72fabcc0281cbe5
 
 build:
-  noarch: python
   number: 1
-  script: "python -m pip install -v --no-binary :all: --no-deps --ignore-installed ."
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  entry_points:
+    - cmark = CommonMark.cmark:main
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
     - pip
-
   run:
     - python
     - future
 
 test:
-  source_files:
-    - spec.txt
-
   imports:
     - CommonMark
 
 about:
   home: http://commonmark.org/
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE
   license_family: BSD
   summary: 'Python parser for the CommonMark Markdown spec'
@@ -50,3 +44,4 @@ extra:
   recipe-maintainers:
     - ericmjl
     - dpryan79
+    - ocefpaf
