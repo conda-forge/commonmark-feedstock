@@ -21,26 +21,18 @@ requirements:
     - pip
   run:
     - python
-    - future
+    - future >=0.14.0
 
 test:
-  source_files:
-    - spec.txt
-
   imports:
     - commonmark
     - commonmark.render
     - commonmark.tests
-
   requires:
     - flake8
     - hypothesis
-
   commands:
-    - python -m commonmark.tests.unit_tests
-    # Fails on windows due to some encoding issue
-    - python -m commonmark.tests.run_spec_tests  # [not win and not ppc64le]
-    - cmark --help
+     - cmark --help
 
 about:
   home: http://commonmark.org/
