@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/C/Commonmark/commonmark-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/C/Commonmark/commonmark-{{ version }}.tar.gz
   sha256: 452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
@@ -17,10 +17,10 @@ build:
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
-    - python
+    - python >={{ python_min }}
     - future >=0.14.0
 
 test:
@@ -31,6 +31,7 @@ test:
   requires:
     - flake8
     - hypothesis
+    - python {{ python_min }}
   commands:
      - cmark --help
 
