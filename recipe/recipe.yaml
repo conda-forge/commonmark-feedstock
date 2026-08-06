@@ -40,8 +40,15 @@ tests:
   - requirements:
       run:
         - python ${{ python_min }}.*
+        - hypothesis
     script:
       - cmark --help
+      - python ${SP_DIR}/commonmark/tests/run_spec_tests.py
+      - python -m unittest -v commonmark.tests.rst_tests
+      - python -m unittest -vb commonmark.tests.unit_tests
+    files:
+      source:
+        - spec.txt
 
 about:
   summary: Python parser for the CommonMark Markdown spec
