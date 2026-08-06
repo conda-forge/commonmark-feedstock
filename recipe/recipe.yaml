@@ -8,13 +8,13 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/C/Commonmark/commonmark-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/c/commonmark/commonmark-${{ version }}.tar.gz
   sha256: 194d693e0c1ac49e83c26455bdeeb2483235e6280313c58b11d0b71c19f58ed1
 
 build:
   number: 0
   noarch: python
-  script: ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
       - cmark = commonmark.cmark:main
@@ -26,7 +26,6 @@ requirements:
     - setuptools
   run:
     - python >=${{ python_min }}
-    - future >=0.14.0
 
 tests:
   - python:
@@ -34,22 +33,20 @@ tests:
         - commonmark
         - commonmark.render
         - commonmark.tests
-      pip_check: false
+      pip_check: true
       python_version:
         - ${{ python_min }}.*
         - "*"
   - requirements:
       run:
-        - flake8
-        - hypothesis
         - python ${{ python_min }}.*
     script:
       - cmark --help
 
 about:
+  summary: Python parser for the CommonMark Markdown spec
   license: BSD-3-Clause
   license_file: LICENSE
-  summary: Python parser for the CommonMark Markdown spec
   description: |
     CommonMark-py is a pure Python port of jgm's commonmark.js, a Markdown
     parser and renderer for the CommonMark specification, using only native
